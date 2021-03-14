@@ -1,5 +1,6 @@
 {
   "name": "@icewolf/cloudflare-db-connect",
+  "version": "0.0.6",
   "description": "Connect your SQL database to Cloudflare Workers.",
   "repository": "github:icewolf/cloudflare-db-connect",
   "homepage": "https://github.com/icewolf/cloudflare-db-connect#readme",
@@ -8,7 +9,7 @@
   "main": "dist/db-connect.cjs.js",
   "module": "dist/db-connect.esm.js",
   "browser": "dist/db-connect.umd.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "bin": {
     "@cloudflare/db-connect-quickstart": "bin/quickstart",
     "db-connect-quickstart": "bin/quickstart"
@@ -17,13 +18,13 @@
     "access": "public"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.0",
     "email-validator": "^2.0.4",
-    "enquirer": "^2.3.1",
-    "node-fetch": "^2.6.0",
-    "rollup": "^0.68.0",
-    "rollup-plugin-typescript": "^1.0.1",
-    "tslib": "^1.10.0",
-    "typescript": "^3.5.3"
+    "enquirer": "^2.3.6",
+    "node-fetch": "^2.6.1",
+    "rollup": "^2.41.2",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3"
   },
   "scripts": {
     "build": "rollup -c",
@@ -41,6 +42,5 @@
     "database",
     "workers",
     "cloudflare"
-  ],
-  "dependencies": {}
+  ]
 }
