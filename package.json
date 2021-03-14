@@ -1,9 +1,8 @@
 {
-  "name": "@cloudflare/db-connect",
-  "version": "0.0.6",
+  "name": "@icewolf/cloudflare-db-connect",
   "description": "Connect your SQL database to Cloudflare Workers.",
-  "repository": "github:cloudflare/db-connect",
-  "homepage": "https://github.com/cloudflare/db-connect#readme",
+  "repository": "github:icewolf/cloudflare-db-connect",
+  "homepage": "https://github.com/icewolf/cloudflare-db-connect#readme",
   "author": "Ashcon Partovi <ashcon@partovi.net>",
   "license": "MIT",
   "main": "dist/db-connect.cjs.js",
