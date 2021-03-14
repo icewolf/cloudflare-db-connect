@@ -2,7 +2,7 @@
   "name": "@icewolf/cloudflare-db-connect",
   "version": "0.0.0-development",
   "description": "Connect your SQL database to Cloudflare Workers.",
-  "repository": "https://github.com/icewolf/cloudflare-db-connect",
+  "repository": "https://github.com/icewolf/cloudflare-db-connect.git",
   "homepage": "https://github.com/icewolf/cloudflare-db-connect#readme",
   "author": "David Roizenman <david@icewolf.ca>",
   "license": "MIT",
