@@ -1,6 +1,6 @@
 {
   "name": "@icewolf/cloudflare-db-connect",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Connect your SQL database to Cloudflare Workers.",
   "repository": "github:icewolf/cloudflare-db-connect",
   "homepage": "https://github.com/icewolf/cloudflare-db-connect#readme",
