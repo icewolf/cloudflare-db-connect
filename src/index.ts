@@ -43,7 +43,7 @@ export class DbConnect {
      * @param clientId recommended, client id of the Access policy for your host.
      * @param clientSecret recommended, client secret of the Access policy for your host.
      */
-    constructor(parameters: DbConnectInit | object) {
+    constructor(parameters: DbConnectOptions) {
         const init = new DbConnectInit(parameters)
 
         const url = new URL(init.host)
@@ -101,7 +101,7 @@ export class DbConnect {
      * 
      * @param command required, the command to submit.
      */
-    public async submit(command: Command | object): Promise<Response> {
+    public async submit(command: Command | CommandOptions): Promise<Response> {
         if(!(command instanceof Command)) command = new Command(command)
         const cmd = <Command> command
 
@@ -117,16 +117,27 @@ export class DbConnect {
 }
 
 /**
+ * Options provided to DbConnect.
+ * 
+ * @see DbConnect
+ */
+export interface DbConnectOptions {
+    host:          string
+    clientId?:     string
+    clientSecret?: string
+} 
+
+/**
  * Initializer for DbConnect with host and credentials.
  * 
  * @see DbConnect
  */
-class DbConnectInit {
+class DbConnectInit implements DbConnectOptions {
     host:          string
     clientId?:     string
     clientSecret?: string
 
-    constructor(parameters: object) {
+    constructor(parameters: DbConnectOptions) {
         Object.assign(this, parameters)
         
         if(!this.host) throw new TypeError('host is a required argument')
@@ -136,11 +147,33 @@ class DbConnectInit {
 }
 
 /**
+ * Arguments used in statement provided to Command.
+ * 
+ * @see Command
+ */
+export type CommandArgumentType = { [key: string]: any } | any[]
+
+/**
+ * Options provided to Command.
+ * 
+ * @see Command
+ */
+export interface CommandOptions {
+    statement:  string
+    arguments?: CommandArgumentType
+    mode?:      Mode
+    isolation?: Isolation
+    timeout?:   number
+    cacheTtl?:  number
+    staleTtl?:  number
+}
+
+/**
  * Command is a standard, non-vendor format for submitting database commands.
  */
-export class Command {
+export class Command implements CommandOptions {
     readonly statement: string
-    readonly arguments: any
+    readonly arguments: CommandArgumentType
     readonly mode:      Mode
     readonly isolation: Isolation
     readonly timeout:   number
@@ -158,7 +191,7 @@ export class Command {
      * @param cacheTtl number of seconds to cache responses, defaults to -1.
      * @param staleTtl after cacheTtl expires, number of seconds to serve stale responses.
      */
-    constructor(parameters: CommandInit | object) {
+    constructor(parameters: CommandOptions) {
         const init = new CommandInit(parameters)
 
         Object.assign(this, init)
@@ -170,16 +203,16 @@ export class Command {
  * 
  * @see Command
  */
-class CommandInit {
+class CommandInit implements CommandOptions {
     statement:  string
-    arguments?: any
+    arguments?: CommandArgumentType
     mode?:      Mode
     isolation?: Isolation
     timeout?:   number
     cacheTtl?:  number
     staleTtl?:  number
 
-    constructor(parameters: object) {
+    constructor(parameters: CommandOptions) {
         Object.assign(this, parameters)
 
         if(!this.statement) throw new TypeError('statement is a required argument')
