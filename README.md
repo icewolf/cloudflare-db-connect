@@ -1,19 +1,21 @@
-# ~~db-connect~~
+# @icewolf/cloudflare-db-connect
 
-### :warning: This was an experimental project and is [not supported.](https://github.com/cloudflare/db-connect/issues/10)
+## Disclaimer
+
+This is a fork of [@cloudflare/db-connect](https://github.com/cloudflare/db-connect). Cloudflare has [discontinued support of this library](https://github.com/cloudflare/db-connect/issues/10), leaving Typescript typings unusable in the published npm package. This fork solves that, with improvements to some typings and up-to-date dependencies as a bonus. There is no new functionality planned for this fork, as all logic lies in the deprecated `cloudflared db-connect` component.
 
 Connect your SQL database to [Cloudflare Workers](https://workers.cloudflare.com/). Import this lightweight Javascript library to execute commands or cache queries from a database through an [Argo Tunnel](https://github.com/cloudflare/cloudflared/releases/tag/2021.2.2). Although designed for Workers, this library can be used in any environment that has access to the [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax) and [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Syntax) APIs.
 
 # Installation
 
 ```bash
-npm i -s @cloudflare/db-connect
+npm i -s @icewolf/cloudflare-db-connect
 ```
 
 # Example
 
 ```js
-import { DbConnect } from '@cloudflare/db-connect'
+import { DbConnect } from '@icewolf/cloudflare-db-connect'
 
 const db = new DbConnect({
   host: 'sql.mysite.com', // Hostname of an Argo Tunnel
@@ -48,7 +50,7 @@ findBirthday('Matthew').then(bday => console.log(bday))
 `db-connect` requires that you setup Cloudflare Access, Argo Tunnel, and Workers. You can use the quickstart command below or read the [`quickstart`](QUICKSTART.md) file for details on how to set this up yourself.
 
 ```
-npm i -g @cloudflare/db-connect
+npm i -g @icewolf/cloudflare-db-connect
 db-connect-quickstart
 ```
 
@@ -67,7 +69,7 @@ db-connect-quickstart
 ## `new DbConnect(options)`
 
 ```js
-import { DbConnect } from '@cloudflare/db-connect'
+import { DbConnect } from '@icewolf/cloudflare-db-connect'
 
 const db = new DbConnect({
   host,         // required, hostname of your Argo Tunnel running in db-connect mode.
@@ -79,7 +81,7 @@ const db = new DbConnect({
 ## `Promise<Response> db.ping()`
 
 ```js
-import { DbConnect } from '@cloudflare/db-connect'
+import { DbConnect } from '@icewolf/cloudflare-db-connect'
 
 const db = new DbConnect({...})
 
@@ -95,7 +97,7 @@ async function myPing() {
 ## `new Command(options)`
 
 ```js
-import { Command } from '@cloudflare/db-connect'
+import { Command } from '@icewolf/cloudflare-db-connect'
 
 const cmd = new Command({
   statement, // required, the database statement to submit.
@@ -111,7 +113,7 @@ const cmd = new Command({
 ## `Promise<Response> db.submit(command)`
 
 ```js
-import { DbConnect, Command } from '@cloudflare/db-connect'
+import { DbConnect, Command } from '@icewolf/cloudflare-db-connect'
 
 const db = new DbConnect({...})
 
