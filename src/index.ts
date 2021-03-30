@@ -255,7 +255,7 @@ export enum Isolation {
 }
   
 /**
- * HttpClient is a convience wrapper for doing common transforms,
+ * HttpClient is a convenience wrapper for doing common transforms,
  * such as injecting authentication headers, to fetch requests.
  */
 class HttpClient {
