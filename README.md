@@ -47,12 +47,7 @@ findBirthday('Matthew').then(bday => console.log(bday))
 
 # Quickstart
 
-`db-connect` requires that you setup Cloudflare Access, Argo Tunnel, and Workers. You can use the quickstart command below or read the [`quickstart`](QUICKSTART.md) file for details on how to set this up yourself.
-
-```
-npm i -g @icewolf/cloudflare-db-connect
-db-connect-quickstart
-```
+`db-connect` requires that you setup Cloudflare Access, Argo Tunnel, and Workers. Read the [`quickstart`](QUICKSTART.md) file for details on how to set this up yourself.
 
 # Databases
 
