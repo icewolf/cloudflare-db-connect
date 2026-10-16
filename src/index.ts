@@ -298,9 +298,11 @@ class HttpClient {
         var response = await this.cache.match(key, {ignoreMethod: true})
         if(!response) {
             response = await this.fetchOrigin(path, init)
-            response.headers.set('Cache-control', this.cacheHeader(cacheTtl, staleTtl))
 
-            await this.cache.put(key, response.clone())
+            if(response.ok) {
+                response.headers.set('Cache-control', this.cacheHeader(cacheTtl, staleTtl))
+                await this.cache.put(key, response.clone())
+            }
         }
 
         return response
