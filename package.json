@@ -26,8 +26,7 @@
     "semantic-release": "semantic-release"
   },
   "files": [
-    "dist/",
-    "example/"
+    "dist/"
   ],
   "keywords": [
     "sql",
